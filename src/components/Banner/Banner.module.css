@@ -1,0 +1,6 @@
+.capa {
+    width: 100%; /*ocupar 100% da tela*/
+    height: 347px; /*altura do banner*/
+    background-size: cover; /*para ocupar todo o tamanho declarado*/
+    background-repeat: no-repeat; /* para a imagem não ser repetida*/
+}

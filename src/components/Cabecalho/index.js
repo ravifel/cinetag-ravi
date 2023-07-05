@@ -14,7 +14,7 @@ export default function Cabecalho() {
                 <CabecalhoLink url="./">
                     Home
                 </CabecalhoLink>
-                <CabecalhoLink>
+                <CabecalhoLink url="favoritos">
                     Favoritos
                 </CabecalhoLink>
             </nav>

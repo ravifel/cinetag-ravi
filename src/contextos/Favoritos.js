@@ -38,7 +38,10 @@ export function useFavoritoContext() {
             //depois vai ser usado o gerenciador de estado "setFavorito()" para adicionar a nova lista de favoritos atualizada
         }
 
-        novaLista.splice(novaLista.indexOf(novoFavorito), 1);
+        novaLista.splice(
+            novaLista.findIndex(
+                item => item.id === novaLista.find(item => item.id === novoFavorito.id).id
+            ), 1);
         return setFavorito(novaLista);
         //se o favorito for repetido e não entrar na condicional
         //vai acontecer um "splice", vai tirar algum elemento da lista
@@ -50,6 +53,13 @@ export function useFavoritoContext() {
     //função que vai possibilitar a adição de Favoritos.
 
 
+
+
+
+
+    //indexOf
+    //metodo que compara o valor que é passado dentro da função com os elementos do Array
+    //usando a igualdade estrita "==="
 
     return {
         favorito,

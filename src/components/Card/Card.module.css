@@ -9,7 +9,6 @@
     justify-content: space-between;
 }
 
-
 .capa {
     width: 100%;
 }
@@ -21,4 +20,10 @@
 
 .favoritar {
     width: 25px;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--preto);
+    text-align: left;
 }

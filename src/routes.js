@@ -2,43 +2,37 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Inicio from 'pages/Inicio'
 import Favoritos from 'pages/Favoritos'
-import Cabecalho from 'components/Cabecalho'
-import Rodape from 'components/Rodape'
-import Container from 'components/Container'
-import FavoritosProvider from 'contextos/Favoritos'
 import Player from 'pages/Player'
 import NaoEncontrada from 'pages/NaoEncontrada'
+import PaginaBase from 'pages/PaginaBase'
 
 export default function AppRoutes() {
     return (
         <BrowserRouter>
-            <Cabecalho />
-            <Container>
-                <FavoritosProvider>
-                    <Routes>
-                        <Route path="/" element={<Inicio />} ></Route>
-                        <Route path="/favoritos" element={<Favoritos />} />
-                        <Route path="/:id" element={<Player />} />
-                        <Route path="*" element={<NaoEncontrada />} />
-                    </Routes>
-                </FavoritosProvider>
-            </Container>
-            <Rodape />
+            <Routes>
+                <Route path="/" element={<PaginaBase />} >
+                    <Route index element={<Inicio />} ></Route>
+                    <Route path="favoritos" element={<Favoritos />} />
+                    <Route path=":id" element={<Player />} />
+                    <Route path="*" element={<NaoEncontrada />} />
+                </Route>
+            </Routes>
         </BrowserRouter>
     )
 }
 
-//BrowserRouter
-// -> Sinaliza que vão existir rotas.
-//Routes
-// -> Funciona como roteador, vai ser o responsável pela troca de rotas.
-//Route
-// -> Onde acontece a declaração das rotas que vão existir dentro do projeto.
+// -> BrowserRouter
+//Sinaliza que vão existir rotas.
 
+// -> Routes
+//Funciona como roteador, vai ser o responsável pela troca de rotas.
 
-//"FavoritosProvider"
-// -> Está fazendo com que o contexto abranja as páginas da aplicação
-// -> As rota vão ser abranjidas dentro desse contexto
-// -> O valor vai ficar sendo compartilhado entre as 2 rotas
+// -> Route
+//Onde acontece a declaração das rotas que vão existir dentro do projeto.
 
+// -> Página não Encontrada
 //"*" é um seletor universal
+
+//Rotas Aninhadas
+//Cada rota que está sendo renderizada dentro da rota pai
+//vai ser exibida dentro do "OUTLET" que existe na PaginaBase

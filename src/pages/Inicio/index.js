@@ -3,17 +3,19 @@ import Banner from 'components/Banner'
 import Titulo from 'components/Titulo'
 import Card from 'components/Card'
 import styles from './Inicio.module.css'
+// import apiKey from 'config/key.js'
 
 export default function Inicio() {
     const [videos, setVideos] = useState([]);
+    const poster_path_start = "https://image.tmdb.org/t/p/w500"
     //criação de uma variavel de videos
     //setVideos responsavel por atualizar o estado
 
     useEffect(() => {
-        fetch('https://my-json-server.typicode.com/monicahillman/cinetag-api/videos')
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=4339138048526f85ba50b87fb60be872&language=en-US&page=1`)
             .then(resposta => resposta.json())
             .then(dados => {
-                setVideos(dados)
+                setVideos(dados.results)
             })
     }, [])
 
@@ -38,7 +40,7 @@ export default function Inicio() {
             </Titulo>
             <section className={styles.container}>
                 {videos.map((video) => {
-                    return <Card {...video} key={video.id} />
+                    return <Card {...video} poster_path_start={poster_path_start} key={video.id} />
                 })}
             </section>
         </>

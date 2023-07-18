@@ -5,7 +5,7 @@ import iconeDesfavoritar from "./desfavoritar.png"
 import { useFavoritoContext } from 'contextos/Favoritos'
 import { Link } from 'react-router-dom'
 
-export default function Card({ id, titulo, capa }) {
+export default function Card({ id, original_title, poster_path, poster_path_start }) {
     const { favorito, adicionarFavorito } = useFavoritoContext();
     //Import do Favorito Context (lista de favoritos e a função de adicionar favorito)
 
@@ -19,14 +19,14 @@ export default function Card({ id, titulo, capa }) {
     return (
         <div className={styles.container}>
             <Link className={styles.link} to={`/${id}`}>
-                <img src={capa} alt={titulo} className={styles.capa} />
-                <h2>{titulo}</h2>
+                <img src={`${poster_path_start}${poster_path}`} alt={original_title} className={styles.capa} />
+                <h2>{original_title}</h2>
             </Link>
             <img src={icone}
                 alt='Favoritar Filme'
                 className={styles.favoritar}
                 onClick={() => {
-                    adicionarFavorito({ id, titulo, capa })
+                    adicionarFavorito({ id, original_title })
                 }}
             //ao clicar no ícone para favoritar, a função de adicionar favoritos foi ativada
             //foram enviados para a função o "id", "titulo" e a "capa" do card especifico

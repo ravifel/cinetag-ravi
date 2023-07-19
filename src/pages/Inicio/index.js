@@ -7,7 +7,6 @@ import styles from './Inicio.module.css'
 
 export default function Inicio() {
     const [videos, setVideos] = useState([]);
-    const poster_path_start = "https://image.tmdb.org/t/p/w500"
     //criação de uma variavel de videos
     //setVideos responsavel por atualizar o estado
 
@@ -40,7 +39,7 @@ export default function Inicio() {
             </Titulo>
             <section className={styles.container}>
                 {videos.map((video) => {
-                    return <Card {...video} poster_path_start={poster_path_start} key={video.id} />
+                    return <Card {...video} poster_path_start={`https://image.tmdb.org/t/p/w500${video.poster_path}`} key={video.id} />
                 })}
             </section>
         </>

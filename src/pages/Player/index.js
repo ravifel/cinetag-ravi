@@ -30,6 +30,7 @@ export default function Player() {
             <Banner imagem="player" />
             <Titulo>
                 <h1>Player</h1>
+                {video}
             </Titulo>
 
             <section className={styles.container}>

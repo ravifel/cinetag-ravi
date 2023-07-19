@@ -9,8 +9,35 @@
     justify-content: space-between;
 }
 
+.card {
+    text-align: center;
+    width: 282px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 10px 10px;
+    padding-bottom: 1.5rem;
+    transition: transform .2s;
+}
+
 .capa {
     width: 100%;
+}
+
+.card:hover {
+    transform: translate(0, -1rem);
+}
+
+.titulo {
+    /* font-family: var(--fonte-secundaria); */
+    font-size: 1.25rem;
+    color: var(--cor-principal-escuro);
+    line-height: 1.75rem;
+    margin: 1.5rem 0 1.75rem;
+}
+
+.descricao {
+    color: var(--cor-principal-escuro);
+    line-height: 1.75rem;
+    margin: 1.5rem 0 1.75rem;
 }
 
 .container h2,

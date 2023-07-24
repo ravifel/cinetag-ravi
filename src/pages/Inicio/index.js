@@ -19,7 +19,7 @@ export default function Inicio() {
     }, [])
 
     // -> useEffect
-    //Realiza açõe sapós a renderização da página. 
+    //Realiza açõe sapós a renderização da página.
     //Requisições sãoi funções assincronas do JavaScript. Pois ela pode demorar um pouco mais do que a renderização da página
 
     // -> fetch
@@ -39,7 +39,7 @@ export default function Inicio() {
             </Titulo>
             <section className={styles.container}>
                 {videos.map((video) => {
-                    return <Card {...video} poster_path_start={`https://image.tmdb.org/t/p/w500${video.poster_path}`} key={video.id} />
+                    return <Card {...video} key={video.id} />
                 })}
             </section>
         </>

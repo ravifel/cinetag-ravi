@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import styles from './Player.module.css'
+import styles from './Detalhes.module.css'
 import Banner from 'components/Banner'
 import Titulo from 'components/Titulo'
 import { useParams } from 'react-router-dom'
+import Botao from 'components/Botao'
 // import NaoEncontrada from 'pages/NaoEncontrada'
 
-export default function Player() {
+export default function Detalhes() {
     const { id } = useParams()
     const image_path = 'https://image.tmdb.org/t/p/w500'
-    const [video, setVideo] = useState();
+    const [video, setVideo] = useState({});
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=4339138048526f85ba50b87fb60be872&language=en-US&page=1`)
@@ -41,41 +42,24 @@ export default function Player() {
     return (
         <>
             <Banner imagem="player" />
-            <Titulo>
-                <h1>{video.title}</h1>
-            </Titulo>
+            <div className={styles.card}>
 
-            <section className={styles.container}>
-                SINOPSE: {video.sinopse}
-            </section>
-
-            <section className={styles.container}>
-                RELEASE DATE: {video.releaseDate}
-            </section>
-
-            <section className={styles.container}>
                 <img
-                    className={styles.image}
                     src={video.image}
                     alt={video.title}
+                    className={styles.capa}
                 />
-            </section>
+                <h2 className={styles.titulo}>{video.title}</h2>
+                <p className={styles.descricao}>
+                    {video.sinopse}
+                </p>
+                <p>RELEASE DATE: {video.releaseDate}</p>
 
-            <section className={styles.container}>
-                <button>Go Back</button>
-            </section>
+                <section className={styles.container}>
+                    <Botao tamanhoBotao="lg" >Voltar</Botao>
+                </section>
 
-            <section className={styles.container}>
-                {/* <iframe
-                    width="100%"
-                    height="100%"
-                    src={video.image}
-                    title={video.title}
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                </iframe> */}
-            </section>
+            </div>
         </>
     )
 }

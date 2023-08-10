@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './Detalhes.module.css'
 import Banner from 'components/Banner'
 import Titulo from 'components/Titulo'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Botao from 'components/Botao'
 // import NaoEncontrada from 'pages/NaoEncontrada'
 
@@ -41,7 +41,10 @@ export default function Detalhes() {
 
     return (
         <>
-            <Banner imagem="player" />
+            <Banner imagem="detalhes" />
+            <Titulo>
+                <h1>{video.title}</h1>
+            </Titulo>
             <div className={styles.card}>
 
                 <img
@@ -49,16 +52,20 @@ export default function Detalhes() {
                     alt={video.title}
                     className={styles.capa}
                 />
-                <h2 className={styles.titulo}>{video.title}</h2>
-                <p className={styles.descricao}>
-                    {video.sinopse}
-                </p>
-                <p>RELEASE DATE: {video.releaseDate}</p>
+                <div className={styles.detalhes}>
+                    <p className={styles.descricao}>
+                        <strong>Sinopse:</strong> {video.sinopse} <br />
+                    </p>
+                    <p className={styles.releaseDate}>
+                        <strong>Release date:</strong> {video.releaseDate}
+                    </p>
 
-                <section className={styles.container}>
-                    <Botao tamanhoBotao="lg" >Voltar</Botao>
-                </section>
-
+                    <section>
+                        <Link to="/">
+                            <Botao tamanhoBotao="lg" >Voltar</Botao>
+                        </Link>
+                    </section>
+                </div>
             </div>
         </>
     )
